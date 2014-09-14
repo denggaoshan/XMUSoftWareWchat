@@ -1,4 +1,4 @@
-package org.sevlet;
+package org.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.service.CoreService;
 import org.util.*;
 
 public class CoreServlet extends HttpServlet {
@@ -49,7 +50,17 @@ public class CoreServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		  // 将请求、响应的编码均设置为UTF-8（防止中文乱码）  
+        request.setCharacterEncoding("UTF-8");  
+        response.setCharacterEncoding("UTF-8");  
+  
+        // 调用核心业务类接收消息、处理消息
+        String respMessage = CoreService.processRequest(request);  
+          
+        // 响应消息  
+        PrintWriter out = response.getWriter();  
+        out.print(respMessage);  
+        out.close();  
 	}
 
 	/**

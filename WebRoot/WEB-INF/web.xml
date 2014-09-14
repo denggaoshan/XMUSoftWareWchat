@@ -9,7 +9,7 @@
     <display-name>This is the display name of my J2EE component</display-name>
     
     <servlet-name>CoreServlet</servlet-name>
-    <servlet-class>org.sevlet.CoreServlet</servlet-class>
+    <servlet-class>org.servlet.CoreServlet</servlet-class>
   </servlet>
   
     <servlet-mapping>
